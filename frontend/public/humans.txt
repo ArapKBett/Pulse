@@ -1,0 +1,13 @@
+# humans.txt
+# Team
+Developer: Arap Bett
+Twitter: @k5_15
+Site: https://yourportfolio.com
+
+# Thanks
+xAI for inspiration and tools
+
+# Tech
+Built with: React, TypeScript, Tailwind CSS, Node.js
+Deployed on: Vercel
+Date: April 2025
