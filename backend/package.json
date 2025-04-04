@@ -1,0 +1,66 @@
+{
+  "name": "pulse-backend",
+  "version": "1.0.0",
+  "description": "A sophisticated backend for the Pulse Social Media Analytics Dashboard",
+  "author": "Arap Bett <jbkp254@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "main": "dist/server.js",
+  "scripts": {
+    "start": "node dist/server.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "lint": "eslint 'src/**/*.{ts}' --fix",
+    "format": "prettier --write 'src/**/*.{ts,json}'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "typecheck": "tsc --noEmit",
+    "migrate": "typeorm-ts-node-commonjs migration:run -d src/config/db.ts",
+    "migrate:generate": "typeorm-ts-node-commonjs migration:generate -d src/config/db.ts src/migrations/$(date +%s)",
+    "prepare": "husky install"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "express-rate-limit": "^7.2.0",
+    "helmet": "^7.1.0",
+    "ioredis": "^5.3.2",
+    "jsonwebtoken": "^9.0.2",
+    "jspdf": "^2.5.1",
+    "pg": "^8.11.3",
+    "typeorm": "^0.3.20",
+    "winston": "^3.12.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/ioredis": "^5.0.0",
+    "@types/jest": "^29.5.12",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.11.30",
+    "@types/supertest": "^6.0.2",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "husky": "^9.0.11",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.2.2",
+    "prettier": "^3.2.5",
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.1.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.3"
+  },
+  "lint-staged": {
+    "*.ts": ["eslint --fix", "prettier --write"],
+    "*.json": ["prettier --write"]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
