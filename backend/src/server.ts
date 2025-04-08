@@ -10,12 +10,13 @@ import { loggerMiddleware } from "./middleware/logger";
 import { rateLimitMiddleware } from "./middleware/rateLimit";
 import { initializeDb } from "./config/db";
 import { env } from "./config/env";
+import { logger } from "./config/logger";
 
 const app = express();
 
 // Middleware
-app.use(helmet()); // Security headers
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(helmet());
+app.use(cors({ origin: env.FRONTEND_URL || "http://localhost:3000", credentials: true }));
 app.use(express.json());
 app.use(loggerMiddleware);
 app.use(rateLimitMiddleware);
@@ -31,11 +32,12 @@ app.use(errorMiddleware);
 const startServer = async () => {
   try {
     await initializeDb();
-    app.listen(env.PORT, () => {
-      console.log(`Server running on port ${env.PORT}`);
+    const port = env.PORT || 8080; // Render assigns PORT
+    app.listen(port, "0.0.0.0", () => {
+      logger.info(`Server running on port ${port}`);
     });
   } catch (error) {
-    console.error("Failed to start server:", error);
+    logger.error("Failed to start server:", error);
     process.exit(1);
   }
 };
