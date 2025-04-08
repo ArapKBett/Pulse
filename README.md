@@ -116,6 +116,87 @@ Frontend: Deploy to Vercel or Netlify using `npm run build`.
 
 Backend: Deploy to Heroku, AWS, or a VPS with PostgreSQL and Redis setup.
 
+Deployment Steps on Render
+
+Push Updates:
+
+bash
+
+
+cd ~/Pulse
+git add frontend/ backend/
+git commit -m "Update frontend and backend for Render deployment"
+git push origin main
+
+
+Backend Web Service:
+
+Render Dashboard > New > Web Service.
+
+
+
+Repo: ArapKBett/Pulse.
+
+
+
+Root Directory: backend.
+
+
+
+Runtime: Node.js.
+
+
+
+Build Command: npm install && npm run build.
+
+
+
+Start Command: npm start.
+
+
+
+Environment Variables: Add all from .env (e.g., JWT_SECRET, DB_HOST from Render PostgreSQL).
+
+
+Frontend Static Site:
+
+Render Dashboard > New > Static Site.
+
+
+
+Repo: ArapKBett/Pulse.
+
+
+
+Root Directory: frontend.
+
+
+
+Build Command: npm install && npm run build.
+
+
+
+Publish Directory: dist.
+
+
+
+Environment Variables: Add VITE_API_URL=https://your-backend.onrender.com.
+
+
+PostgreSQL:
+
+Render Dashboard > New > PostgreSQL.
+
+
+
+Name: pulse-db.
+
+
+
+Copy connection details to backend env vars
+
+
+
 Contributing
 Fork the repository.
 Create a feature branch: git checkout -b feature/your-feature.
