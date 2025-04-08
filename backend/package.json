@@ -1,14 +1,12 @@
 {
   "name": "pulse-backend",
   "version": "1.0.0",
-  "description": "A sophisticated backend for the Pulse Social Media Analytics Dashboard",
-  "author": "Arap Bett <jbkp254@gmail.com>",
-  "license": "MIT",
-  "private": true,
+  "description": "Backend for Pulse Social Media Analytics Dashboard",
+  "type": "module",
   "main": "dist/server.js",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev": "ts-node src/server.ts",
     "build": "tsc",
     "watch": "tsc --watch",
     "lint": "eslint 'src/**/*.{ts}' --fix",
@@ -51,7 +49,7 @@
     "prettier": "^3.2.5",
     "supertest": "^6.3.4",
     "ts-jest": "^29.1.2",
-    "ts-node-dev": "^2.0.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
   },
   "lint-staged": {
